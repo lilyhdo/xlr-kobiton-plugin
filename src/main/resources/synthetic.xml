@@ -17,5 +17,18 @@
     <property name="devices" category="output" kind="map_string_string" description="List of available devices (deviceId, model, available)."/>
   </type>
 
+  <type type="kobiton.ListDevices" extends="kobiton.Task">
+    <property name="filepath" category="input" required="true" description="The path to the file you wish to upload."/>
+
+    <property name="appid" category="output" kind="map_string_string" description="App ID in the apps repo that allows you to run tests."/>
+  </type>
+
+  <type type="kobiton.ExecuteScript" extends="kobiton.Task">
+    <property name="deviceName" category="input" required="true" description="Name of device. For example: Galaxy S6, iPhone 6..."/>
+    <property name="platformName" category="input" required="true" description="Device platform. For example: Android, iOS"/>
+    <property name="platformVersion" category="input" required="true" description="Device platform version. For example: '5.0.2'"/>
+    <property name="testScript" category = "input" required="true" description="The automation test script" />
+  </type>
+
   <type type="kobiton.Server" extends="configuration.HttpConnection" />
 </synthetic>
