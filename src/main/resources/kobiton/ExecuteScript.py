@@ -1,5 +1,12 @@
 
+# inputs
+deviceName = ""
+platformName = ""
+platformVersion = ""
+testScript = ""
 
+# username = ""
+# apiKey = ""
 username = kobitonServer['username']
 apiKey = kobitonServer['password']
 
@@ -12,11 +19,11 @@ desired_caps = {
     'sessionDescription': '',
     'deviceOrientation':  'portrait',
     'captureScreenshots': True,
-    'app':                'kobiton-store:9701',
+    'app':                'kobiton-store:9701', # appId
     'deviceGroup':        'KOBITON',
     'deviceName':         deviceName,
     'platformName':       platformName,
     'platformVersion':    platformVersion
 }
 
-execfile()
+execfile(testScript)
