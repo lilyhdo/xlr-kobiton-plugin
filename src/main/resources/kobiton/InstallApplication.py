@@ -9,7 +9,6 @@ import jarray
 # filepath = ""
 # filename = ""
 
-whichApi = 'api'
 userapi = username + ":" + apiKey
 base64EncodedBasicAuth = base64.b64encode(userapi.encode())
 basicAuth = 'Basic ' + base64EncodedBasicAuth.decode()
@@ -29,10 +28,6 @@ def uploadToS3(presignedUrl, filepath):
     stream = FileInputStream(File(filepath))
     fileBytes = jarray.zeros(stream.available(), "b")
     stream.read(fileBytes)
-    file = File(filepath)
-    if (file):
-        print('I got it?')
-        print(file)
     jsonResponse = Unirest.put(presignedUrl) \
         .header('Content-Type', 'application/octet-stream') \
         .header('x-amz-tagging', 'unsaved=true') \
@@ -50,10 +45,11 @@ def createApp(appPath):
         .asJson().getStatus()
     print(response)
 
-
-urlAppPath = generateUrl()
-uploadToS3(urlAppPath[0], filepath)
-createApp(urlAppPath[1])
-
-
-
+try:
+    urlAppPath = generateUrl()
+    uploadToS3(urlAppPath[0], filepath)
+    createApp(urlAppPath[1])
+    print("Your app has successfully been uploaded to the Kobiton Apps Repository. Please go to " +
+    "portal.kobiton.com/apps to check your app ID.")
+except:
+    print("Your app has not been uploaded. Please try again or upload manually on portal.kobiton.com/apps")

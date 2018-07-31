@@ -1,4 +1,8 @@
+
+
 kobitonServerUrl = ''
+username = ''
+apiKey = ''
 
 # 100 seconds
 session_timeout = 100
