@@ -1,5 +1,5 @@
 from org.openqa.selenium.remote import DesiredCapabilities
-import WebTest
+
 
 # inputs
 deviceName = ""
