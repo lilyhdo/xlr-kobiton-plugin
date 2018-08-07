@@ -5,6 +5,8 @@ import base64
 # apiKey = kobitonServer['password']
 # model = kobitonServer['model']
 
+model = ''
+
 userapi = username + ":" + apiKey
 base64EncodedBasicAuth = base64.b64encode(userapi.encode())
 basicAuth = 'Basic ' + base64EncodedBasicAuth.decode()
@@ -36,5 +38,6 @@ else:
 
 if devices == {}:
     print("No devices matching your desired model were available.")
-
-print(devices)
+else:
+    print(devices)
+    print(str(len(devices)) + " devices are available.")
